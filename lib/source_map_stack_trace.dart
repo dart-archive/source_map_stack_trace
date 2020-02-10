@@ -19,10 +19,7 @@ import 'package:stack_trace/stack_trace.dart';
 /// [sdkRoot] is the URI surfaced in the stack traces for SDK libraries.
 /// If it's passed, stack frames from the SDK will have `dart:` URLs.
 StackTrace mapStackTrace(Mapping sourceMap, StackTrace stackTrace,
-    {bool minified = false,
-    SyncPackageResolver packageResolver,
-    Uri sdkRoot
-    }) {
+    {bool minified = false, SyncPackageResolver packageResolver, Uri sdkRoot}) {
   if (stackTrace is Chain) {
     return Chain(stackTrace.traces.map((trace) {
       return Trace.from(mapStackTrace(sourceMap, trace,
