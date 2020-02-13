@@ -161,7 +161,8 @@ bar.dart.js 10:11  foo
               SourceLocation(12, line: 9, column: 1), '\n' * 4));
 
     var mapping = parseJson(builder.build('foo.dart.js.map'));
-    var frame = _mapTrace(mapping, trace, sdkRoot: 'sdk/').frames.first;
+    var frame =
+        _mapTrace(mapping, trace, sdkRoot: Uri.parse('sdk/')).frames.first;
     expect(frame.uri, equals(Uri.parse('dart:async/foo.dart')));
     expect(frame.line, equals(2));
     expect(frame.column, equals(4));
@@ -243,7 +244,7 @@ bar.dart.js 10:11  foo
 /// Like [mapStackTrace], but is guaranteed to return a [Trace] so it can be
 /// inspected.
 Trace _mapTrace(Mapping sourceMap, StackTrace stackTrace,
-    {bool minified = false, Map<String, Uri> packageMap, sdkRoot}) {
+    {bool minified = false, Map<String, Uri> packageMap, Uri sdkRoot}) {
   return Trace.from(mapStackTrace(sourceMap, stackTrace,
       minified: minified, packageMap: packageMap, sdkRoot: sdkRoot));
 }
@@ -251,7 +252,7 @@ Trace _mapTrace(Mapping sourceMap, StackTrace stackTrace,
 /// Like [mapStackTrace], but is guaranteed to return a [Chain] so it can be
 /// inspected.
 Chain _mapChain(Mapping sourceMap, StackTrace stackTrace,
-    {bool minified = false, Map<String, Uri> packageMap, sdkRoot}) {
+    {bool minified = false, Map<String, Uri> packageMap, Uri sdkRoot}) {
   return Chain.forTrace(mapStackTrace(sourceMap, stackTrace,
       minified: minified, packageMap: packageMap, sdkRoot: sdkRoot));
 }

@@ -16,20 +16,15 @@ import 'package:stack_trace/stack_trace.dart';
 /// `package:` uris for those packages. It is used to  it's used to reconstruct
 /// `package:` URIs for stack frames that come from packages.
 ///
-/// [sdkRoot] is the URI (usually a `file:` URI) for the SDK containing dart2js.
-/// It can be a [String] or a [Uri]. If it's passed, stack frames from the SDK
-/// will have `dart:` URLs.
+/// [sdkRoot] is the URI surfaced in the stack traces for SDK libraries.
+/// If it's passed, stack frames from the SDK will have `dart:` URLs.
 StackTrace mapStackTrace(Mapping sourceMap, StackTrace stackTrace,
-    {bool minified = false, Map<String, Uri> packageMap, sdkRoot}) {
+    {bool minified = false, Map<String, Uri> packageMap, Uri sdkRoot}) {
   if (stackTrace is Chain) {
     return Chain(stackTrace.traces.map((trace) {
       return Trace.from(mapStackTrace(sourceMap, trace,
           minified: minified, packageMap: packageMap, sdkRoot: sdkRoot));
     }));
-  }
-
-  if (sdkRoot != null && sdkRoot is! String && sdkRoot is! Uri) {
-    throw ArgumentError('sdkRoot must be a String or a Uri, was "$sdkRoot".');
   }
 
   var sdkLib = sdkRoot == null ? null : '$sdkRoot/lib';

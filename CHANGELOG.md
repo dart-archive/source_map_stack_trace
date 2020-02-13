@@ -2,11 +2,12 @@
 
 ### Breaking Changes
 
-- Removed dependency on `package_resolver` and changed the apis to accept a
+* Removed dependency on `package_resolver` and changed the apis to accept a
   `Map<String, Uri>` which maps package names to the base uri to resolve the
   `package:` uris for those packages.
-- Dropped support for the `packageRoot` argument which has been deprecated
-  for a while.
+* The `sdkRoot` argument must be an `Uri`. Use `Uri.parse` for use
+  cases previously passing a `String`.
+* The deprecated `packageRoot` argument has been removed.
 
 ## 1.1.5
 
