@@ -1,4 +1,12 @@
-## 1.1.6-dev
+## 2.0.0
+
+### Breaking Changes
+
+- Removed dependency on `package_resolver` and changed the apis to accept a
+  `Map<String, Uri>` which maps package names to the base uri to resolve the
+  `package:` uris for those packages.
+- Dropped support for the `packageRoot` argument which has been deprecated
+  for a while.
 
 ## 1.1.5
 
