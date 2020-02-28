@@ -29,8 +29,5 @@ dependency_overrides:
       url: https://github.com/dart-lang/test.git
       ref: drop-package-resolver
       path: pkgs/test
-  package_config:
-    git:
-      url: https://github.com/dart-lang/package_config.git
-      ref: '1.9'
+  package_config: ^1.9.1
     
