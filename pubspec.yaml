@@ -10,7 +10,7 @@ environment:
 dependencies:
   path: '>=1.8.0-nullsafety <1.8.0'
   stack_trace: '>=1.10.0-nullsafety <1.10.0'
-  source_maps: '>=0.10.1-nullsafety <0.10.1'
+  source_maps: '>=0.10.10-nullsafety <0.10.10'
 
 dev_dependencies:
   source_span: ^1.6.0
